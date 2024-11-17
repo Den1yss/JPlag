@@ -1,0 +1,43 @@
+#include <stdio.h>
+
+int main(void)
+{
+    int gold = 15;
+    int goblin_hp = 3;
+    char player_action;
+
+    printf("На вас напал гоблин. Выберите: 'A'така или 'R'ан.\n");
+    player_action = getchar();
+
+    while (player_action != 'r' && player_action != 'R')
+    {
+        if (player_action == 'a' || player_action == 'A')
+        {
+            goblin_hp--;
+            printf("Вы ударили гоблина. Его здоровье: %d\n", goblin_hp);
+
+
+            if (goblin_hp <= 0)
+            {
+                printf("Вы убили гоблина!\n");
+                printf("Вы получили %d золота.\n", gold);
+                break;
+            }
+        }
+        else
+        {
+            printf("Неверный ввод! Попробуйте ещё раз.\n");
+        }
+
+        printf("Ваше следующее действие:\n");
+        while (getchar() != '\n'); 
+        player_action = getchar();
+    }
+
+    if (player_action == 'r' || player_action == 'R')
+    {
+        printf("Вы решили убежать. До свидания!\n");
+    }
+
+    return 0;
+}
